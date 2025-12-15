@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory</title>
+    <style>
+        .full-time { color: green; font-weight: bold; }
+        .part-time { color: red; font-weight: bold; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Employee Directory</h1>
+
+    {% if employee %}
+        <ul>
+        {% for emp in employee %}
+            <li>
+                <strong>{{ emp.name }}</strong> - {{ emp.title }} - rs{{ emp.salary }} -
+                <span class="{% if emp.full_time %}full-time{% else %}part-time{% endif %}">
+                    {% if emp.full_time %}Full-Time{% else %}Part-Time{% endif %}
+                </span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No employees available.</p>
+    {% endif %}
+</body>
+</html>

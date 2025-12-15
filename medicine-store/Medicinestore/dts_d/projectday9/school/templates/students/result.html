@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ name|title }}'s Result</title>
+</head>
+<body>
+    <h1>Result of {{ name|title }}</h1>
+{% if student %}
+  <ul>
+    {% for subject, mark in student.items %}
+      <li>{{ subject|title }} : {{ mark }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No result found</p>
+{% endif %}
+<a href="{% url 'home' %}">Back</a>
+
+</body>
+</html>

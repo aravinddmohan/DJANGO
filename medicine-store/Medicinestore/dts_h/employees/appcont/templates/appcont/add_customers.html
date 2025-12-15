@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Customer</title>
+</head>
+<body>
+    <h1>Add Customer</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        {% if msg %}
+        <p style="color: green;">{{ msg }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>

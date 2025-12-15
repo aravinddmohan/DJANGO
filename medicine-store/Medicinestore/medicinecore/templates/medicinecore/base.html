@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MedicineCore</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen">
+
+<nav class="bg-white/20 backdrop-blur-md text-white px-8 py-4 flex justify-between items-center shadow-lg">
+    <h1 class="text-xl font-bold">💊 MedicineCore</h1>
+
+    {% if user.is_authenticated %}
+    <div class="flex items-center gap-4">
+        <span class="opacity-90">{{ user.username }}</span>
+        <a href="{% url 'logout' %}" class="bg-red-500 px-4 py-1 rounded-lg hover:bg-red-600 transition">
+            Logout
+        </a>
+    </div>
+    {% endif %}
+</nav>
+
+<div class="max-w-xl mx-auto mt-20 bg-white rounded-2xl shadow-2xl p-8">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mb-4 p-3 rounded-lg bg-yellow-100 text-yellow-800">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
+

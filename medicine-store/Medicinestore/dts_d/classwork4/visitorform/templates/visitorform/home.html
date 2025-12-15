@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor Form</title>
+</head>
+<body>
+    <h2>Enter your username</h2>
+    <form method="get" action="{% url 'result' %}">
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

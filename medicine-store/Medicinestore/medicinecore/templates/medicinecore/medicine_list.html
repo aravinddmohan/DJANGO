@@ -1,0 +1,41 @@
+{% extends 'medicinecore/base.html' %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Your Medicines</h2>
+    <a href="{% url 'add_medicine' %}"
+       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+        + Add Medicine
+    </a>
+</div>
+
+<form method="get" class="mb-4">
+    <input type="text" name="q" value="{{ query }}"
+           placeholder="Search by first letter"
+           class="w-full border rounded-lg p-2">
+</form>
+
+<table class="w-full border rounded-lg overflow-hidden">
+    <thead class="bg-indigo-600 text-white">
+        <tr>
+            <th class="p-3 text-left">Name</th>
+            <th class="p-3 text-left">Stock</th>
+            <th class="p-3 text-left">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for med in page_obj %}
+        <tr class="border-b hover:bg-gray-100">
+            <td class="p-3">{{ med.name }}</td>
+            <td class="p-3">{{ med.stock }}</td>
+            <td class="p-3 space-x-2">
+                <a href="{% url 'edit_medicine' med.id %}"
+                   class="text-blue-600 font-semibold">Edit</a>
+                <a href="{% url 'delete_medicine' med.id %}"
+                   class="text-red-600 font-semibold">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
